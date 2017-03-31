@@ -1,0 +1,35 @@
+1.JS简介：页面组成：
+			html -- 结构
+			css  -- 样式
+			js   -- 行为
+	js:JavaScript
+	布兰德.艾奇
+	js组成：
+		ECMAScript(5.1) -- Js基本语法组成
+		DOM(文档对象模型) -- 操作页面的方法
+		BOM(浏览器对象模型) -- 浏览器相关的方法
+			
+	作用：页面交互，修改css样式，与服务器通信
+	
+	onclick鼠标点击事件
+	alert()调用浏览器默认弹窗
+	()：函数或者方法执行
+	js行间：<input type="button" style="width:100px;height:100px" value="按钮" onclick="alert('你好')"/>
+		优点：直接
+		缺点：不方便修改，维护，扩展，复用
+	内嵌js
+		优点：方便同一页面复用
+		1.推荐script放在body结束标签上边
+		2.放在head里，因为代码从上往下逐行解析，页面结构还没加载完，所以获取不到元素
+		解决方法：window.onload=function(){
+				代码写这里
+			}
+			window.onload
+				页面加载完事件
+			
+			；：一行代码结束
+
+	js外链：
+		问题同内嵌js
+		优点：任意页面可以复用	
+	
