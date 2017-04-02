@@ -80,5 +80,28 @@
 		 		调用：
 		 			1.直接调用 -- 函数名()
 		 			2.事件调用
-		 		注意：函数名后不加括号，不然没点，就执行了 btn.onclick = fn;//函数不加括号，不然还没点，就执行了
+		 		注意：函数名后不加括号，不然没点，就执行了 btn.onclick = fn;//函数不加括号，不然还没点，就执行了
+ 	调用浏览器控制台
+		console.log()
+	属性操作
+		元素.style.样式名 = '值'
+		属性操作操作的是行间样式，可读可写
+			 		
+		1.通过.的方式操作属性 console.log(div.style.width)
+			如果样式名不符合命名规范，带- console.log(div.style.background-color)//报错
+			解决方法：
+			 	1.用['样式名']，注意要加引号 console.log(div.style['background-color'])  
+			 	2.去掉-，后边单词首字母大写  console.log(div.style.backgroundColor)
+		2.通过[]的方式  console.log(div.style['background-color'])
+			注意：
+			 复合样式，谷歌和火狐下，获取有区别
+	常用属性
+		 id
+		 class -- className
+		 style
+		 innerHTML
+		 	标签对中间的所有内容，包括子标签，行间属性
+		 innerText
+		 	标签中的文字内容，不会识别标签
+		 style.cssText
 	
