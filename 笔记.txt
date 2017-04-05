@@ -132,5 +132,33 @@
 			var arr = [];
 			1.值与值之间用逗号分隔，注意最后一位后边别加逗号
 			2.数组下标数字从0开始,取值arr[0]
-			3.length,数据的个数,arr.length,最后一位arr[arr.length-1]
+			3.length,数据的个数,arr.length,最后一位arr[arr.length-1]
+
+2.获取元素
+	 css选择器
+		id -- #
+		class -- .
+		标签名 -- div
+	js选择器
+		1.id方式
+			document.getElementById(''id名称')
+		2.class方式
+			document.getElementsByClassName('class名')
+			元素.getElementsByClassName('class名')
+			document和元素限制范围，在范围内，获取指定class名的元素
+			获取到的是一个集合，类数组，length获取到元素的个数，数字下标取值，如果只有一个元素，也必须加[0]操作元素
+		3.标签名方式
+			document.getElementsByTagName('标签名')
+			元素.getElementsByTagName('标签名')
+			document和元素限制范围，在范围内，获取指定标签名的元素
+			获取到的是一个集合，类数组，length获取到元素的个数，数字下标取值，如果只有一个元素，也必须加[0]操作元素
+	css选择器
+		document.querySelector('css选择器')
+		元素.querySelector('css选择器')
+		获取到的是一个元素，即使通过标签名或者class，应该获取到一组元素，也只能获取到第一个
+		 	
+		document.querySelectorAll('css选择器')
+		元素.querySelectorAll('css选择器')
+		获取到的是一组元素，数字下标取值，length
+
 	
