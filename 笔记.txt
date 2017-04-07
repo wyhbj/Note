@@ -8,14 +8,14 @@
 		ECMAScript(5.1) -- Js基本语法组成
 		DOM(文档对象模型) -- 操作页面的方法
 		BOM(浏览器对象模型) -- 浏览器相关的方法
-	作用：页面交互，修改css样式，与服务器通信
+	作用：页面交互，修改css样式，与服务器通信
 	onclick鼠标点击事件
 	alert()调用浏览器默认弹窗
 	()：函数或者方法执行
-	js行间：<input type="button" style="width:100px;height:100px" value="按钮" onclick="alert('你好')"/>
+	js行间：<input type="button" style="width:100px;height:100px" value="按钮" onclick="alert('你好')"/>
 		优点：直接
-		缺点：不方便修改，维护，扩展，复用
-	内嵌js
+		缺点：不方便修改，维护，扩展，复用
+	内嵌js：
 		优点：方便同一页面复用
 		1.推荐script放在body结束标签上边
 		2.放在head里，因为代码从上往下逐行解析，页面结构还没加载完，所以获取不到元素
@@ -26,7 +26,6 @@
 				页面加载完事件
 			
 			；：一行代码结束
-
 	js外链：
 		问题同内嵌js
 		优点：任意页面可以复用
@@ -34,15 +33,13 @@
 	变量
 		var 变量名 = 数据；
 		作用：存储数据，方便数据复用，简化代码
-		 		
 		变量初始化
 		 	var 变量名 = 数据；
 		 	声明变量
 		 		var 变量名；
 		 	变量赋值
-		 		变量名 = 数据；	
-
-			命名规则
+		 		变量名 = 数据；
+			命名规则
 			 	1.可以使用字母，数字，下划线_,美元符$
 			 	2.第一位不允许是数字
 			 	3.不允许用关键字和保留字
@@ -90,7 +87,7 @@
 			 	2.去掉-，后边单词首字母大写  console.log(div.style.backgroundColor)
 		2.通过[]的方式  console.log(div.style['background-color'])
 			注意：
-			 复合样式，谷歌和火狐下，获取有区别
+			 复合样式，谷歌和火狐下，获取有区别
 	常用属性
 		 id
 		 class -- className
@@ -156,7 +153,7 @@
 		 	
 		document.querySelectorAll('css选择器')
 		元素.querySelectorAll('css选择器')
-		获取到的是一组元素，数字下标取值，length
+		获取到的是一组元素，数字下标取值，length
 for循环
 	for(初始化变量;判断条件;变量改变){
 		 重复执行的代码
