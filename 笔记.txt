@@ -227,7 +227,116 @@ for循环
 				//记录上一次点的是第几个
 				prev = this.index;
 			}
-		}
+		}
+数据类型
+	简单数据类型或者基本数据类型
+	String - 字符串
+		由0个或者多个字符组成的串
+		可以用单引号也可以双引号，但是必须成对出现
+	Number - 数字
+		整数或者小数
+	Boolean - 布尔值
+		true - 真
+		false - 假
+	Null - 空
+		只有一个值：null
+		当声明一个变量，暂时不知道存什么数据类型，可以先设置为null
+	Undefined - 未定义	
+		只有一个值：undefined
+		当声明变量未赋值，默认值为undefined
+	复杂数据类型或复合数据类型
+	可以由简单数据类型或者复合数据类型组成
+	object - 对象
+		var arr = []
+		var j = {}
+		属性 = 值
+		attr = value
+		键值对
+		当属性名不复合命名规范时，带-，加引号'font-size'
+		例子：var j = {
+				name:'陈斌',
+				age:18,
+				duixiang:[],
+				'font-size':16,
+				fontSize:17
+			};
+			console.log(j.name);
+			console.log(j.age);
+			console.log(j.duixiang);
+			console.log(j['font-size']);
+			console.log(j.fontSize);
+	<input type="text" />+<input type="text" />=<input type="text" /><input type="button" value="按钮"/>
+	input的value，innerHTML都是字符串//1+1=11
+	数据类型转换
+		一种数据类型转换成另外一种数据类型
+		js可以把任意数据类型转换成下列三种数据类型
+		string - 字符串
+		number - 数字
+		boolean - 布尔值
+		同时js提供了基本的转换方法
+		String(要转换的数据)
+		Number(要转换的数据)
+		Boolean(要转换的数据)
+	Number()
+		如果能转成纯数字就转成数字，如果转不成就是NaN
+		NaN:not a number
+		NaN的数据类型是数字类型
+		字符串
+			1.纯数字的字符串，转成数字
+			2.前边有0,会忽略
+			3.前后有空格,会忽略
+			4.空字符串,转成0
+			5.不是纯数字还有其他字符（40px）,转成NaN
+		布尔值
+			 true - 1
+			 false - 0
+		未定义
+			undefined - NaN
+		空
+			null - 0
+		对象
+			arr
+			1.空数组 - 0
+			2.非空数组 - NaN
+			{}都是NaN
+	typeof 数据
+		检测数据类型
+		注意：返回首字母是小写
+		ECMAScript:string字符串  number数字 boolean布尔值  null空  undefined未定义 object对象
+		typeof: string字符串  number数字 boolean布尔值  undefined未定义 object对象 function函数（没有null,null是object）
+	字符串转数字
+		parseInt()
+		整数，忽略第一位非数字往后的字符
+		parseFloat()
+		小数,忽略非数字部分
+		1.纯数字的字符串，转成数字
+		2.前边有0,会忽略
+		3.前后有空格,会忽略
+		4.空字符串,转成NaN
+		5.不是纯数字还有其他字符（40px）,转成NaN
+	转成字符串类型
+		String(要转的数据)
+		简易转换法：''+任意数据类型	console.log(''+1)
+	转成布尔值
+		false:0,'',undefined,null,NaN
+		简易版：！取反
+		!!数据
+		数字
+		只有0是false,其他都是true
+		字符串
+		空字符串是false,有字符就是true
+		未定义
+		undefined - false
+		空
+		null - false
+	
+
+	
+		
+
+
+
+
 
 
 	
