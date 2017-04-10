@@ -328,7 +328,46 @@ for循环
 		未定义
 		undefined - false
 		空
-		null - false
+		null - false
+	NaN
+		NaN与任何数据都不相等，包括也不等于自己
+	isNaN()
+		先调用Number()，然后再判断是否是NaN
+		如果是NaN,返回true
+		如果不是NaN,返回false
+	显示类型转化
+		明确调用某种方法把一种数据类型转换成另外一种数据类型
+		Number()
+		隐式类型转化
+		我们没有明确调用数据类型转换的方法，为了系统运算或者拼接，系统偷偷把类型转换了
+	小例子（判断是不是整数）
+	inps[1].onclick = function(){
+		var val = inps[0].value;
+		/*
+		 * 100.1  100
+		Number() - 100.1 -100
+		parseInt() - 100 - 100
+		parseFloat() - 100.1 - 100
+		 * */
+		if(parseInt(val) == parseFloat(val)){
+			alert('这是整数')
+		}else{
+			alert('这不整数')
+		}
+	}
+	小例子（找出数组里最大值）
+	var arr = [2,3,6,83,68,23,78,5,1];
+	var max = arr[0];
+	for(var i=1;i<arr.length;i++){
+		if(arr[i]>max){
+			max = arr[i];
+		}
+	}
+	console.log(max)
+	算术运算符
+		+ - * / % ++ --
+		n++:先赋值，后运算
+		++n:先运算，后赋值
 	
 
 	
