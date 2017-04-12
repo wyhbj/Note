@@ -457,15 +457,66 @@ for循环
 		}
 		console.log(i)
 		}
-		console.log('标记')	
-	
-
-	
-		
-
-
-
-
-
-
-	
+		console.log('标记')
+	for in
+		循环，遍历，迭代
+		for(var k in j){}
+	函数 function
+		作用：复用代码，声明一个函数，把要复用的代码放到函数里，在需要用的时候调用这个函数，里边的代码就会逐行执行
+		函数声明式
+		function 函数名(){}
+		可以先声明再调用，也可以先调用，再声明
+		函数表达式
+			var fn = function(){}
+		必须先声明，后调用
+	函数参数
+		我们可以给函数里传入一些数据，让函数的执行或者返回结果有一些变化，函数的可用性和扩展性更高
+		参数
+			由0个或者多个组成，中间用逗号分隔
+		形参
+		 	1.在函数声明时，定义形参
+		 	2.形参只能在函数内部
+		 	3.形参相当于在函数内部使用的变量
+		 	4.在函数调用时，传入实参，给形参一一对应赋值
+		 	5.没有赋值时，默认值是undefined
+		 实参
+		 	1.在函数调用时候传入
+		 	2.一一对应赋值给形参
+	arguments
+		参数集合，类数组，length,数字下标取值，从0开始
+		一般在不定参数时使用,不写形参，只能在函数内部使用
+		传入实参时，一一对应赋值给形参，同时会把数据存入arguments里
+	例子：var n = 0;
+		function fn(){
+			for(var i=0;i<arguments.length;i++){
+				n+=arguments[i];
+			}
+			console.log(n)
+		}
+		fn(1,2,3,4,5,6,7,8,9,11,2,3,5,6,7,8,4,7,89,90);	
+	return 函数返回值
+		让函数执行的结果有一定的变化，默认值是undefined,可以返回任意数据类型，只能在函数内部使用
+		fn()就等于return后边的数据
+		作用：
+			1.函数执行完返回我们指定的数据
+			2.终止函数后边的代码执行
+	例子：var uls = document.getElementsByTagName('ul');
+		for(var i=0;i<uls.length;i++){
+			if(i==0){
+				fn(i,'red');
+			}else{
+				fn(i,'blue');
+			}	
+		}
+		function fn(n,color){
+		var lis = uls[n].getElementsByTagName('li');
+		for(var i=0;i<lis.length;i++){
+			lis[i].onclick = function(){
+				for(var i=0;i<lis.length;i++){
+					lis[i].style.background = '';
+				}
+				this.style.background = color;
+				}
+			}
+		}	
+		
