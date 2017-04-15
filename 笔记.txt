@@ -553,5 +553,40 @@ for循环
 		全局var声明变量或者函数一个变量，同时就会在window上创建一个属性名为变量名，值就为变量值	
 	一般我们用var声明变量，也可以不用
 		首次给一个未定义的变量赋值,系统会自动创建这个变量，但是是全局变量
-		但是不推荐，声明变量一定要用var，不然会造成全局污染
+		但是不推荐，声明变量一定要用var，不然会造成全局污染
+	delete 操作符
+		作用：删除对象下属性
+		用var声明的变量，不能用delete删除
+		返回值：
+			能删除，返回true
+			不能删除，返回false
+	例子：a = 1;
+		var b=2;
+		delete a;
+		delete b;
+		function fn(){
+			var c=3;
+			console.log(delete c)
+		}
+		fn();
+		console.dir(window)
+	预解析
+		js代码在执行之前，会先把var声明的变量和函数，提到当前域的最前边，然后再逐行执行代码
+		var 
+			a
+		函数
+			function fn(){}
+		执行
+			a=1;
+			a=2;
+			fn=1;
+	全局
+		var a
+		 	a=1
+		fn
+	fn函数
+		var a
+		a=2
+		a=3
+
 		
