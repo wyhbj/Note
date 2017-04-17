@@ -704,7 +704,23 @@ for循环
 			onOff = false;
 			max = 100;
 			min = 0;
-		}
+		}
+定时器
+	重复执行定时器
+		setInterval()
+	延时执行定时器
+		setTimeout()
+	重复执行定时器
+	设置定时器
+		setInterval(函数，间隔时间)
+		参数
+			间隔时间
+			1秒=1000毫秒
+			毫秒，不带单位
+		返回值
+			数字类型 定时器的编号或者叫Id,从1开始
+	关闭定时器	
+		clearInterval()
 
 
 
