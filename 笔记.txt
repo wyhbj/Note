@@ -720,7 +720,125 @@ for循环
 		返回值
 			数字类型 定时器的编号或者叫Id,从1开始
 	关闭定时器	
-		clearInterval()
+		clearInterval()
+	例子：自动图片切换
+	var img = document.getElementById('img');
+	var prev = document.getElementById('prev');
+	var next = document.getElementById('next');
+	var n = 0 ;
+	var arr = ['img/0.jpg','img/1.jpg','img/2.jpg','img/3.jpg','img/4.jpg'];
+	var box = document.getElementById('box');
+	var timer = null;
+	var lis = document.getElementsByTagName('li');
+	function tab(){
+		if(n > arr.length-1){
+			n = 0;
+		}
+		if(n < 0){
+			n = arr.length-1;
+		}
+		for(var i=0;i<lis.length;i++){
+			lis[i].className = '';
+		}
+		lis[n].className = 'active';
+		img.src = arr[n];
+	}
+	next.onclick = function(){
+		n++;
+		tab();
+	}
+	prev.onclick = function(){
+		n--;
+		tab();
+	}
+	for(var i=0;i<lis.length;i++){
+		lis[i].index = i;
+		lis[i].onclick = function(){
+			n = this.index;
+			tab();
+		}
+	}
+	timer = setInterval(function(){
+		n++;
+		tab();
+	},1000);
+	box.onmouseover = function(){
+		clearInterval(timer);
+	}
+	box.onmouseout = function(){
+		timer = setInterval(function(){
+			n++;
+			tab();
+		},1000);
+		console.log(timer)
+	}
+	例子：运动
+	btn.onclick = function(){
+			//count目标点位置
+			var c = 400;
+			//speed速度
+			var s = 3;
+			timer = setInterval(function(){
+				//begin起始位置
+				var b = parseFloat(getComputedStyle(box).left);
+				var v = b+s;
+				//396+3 = 399
+				//399+3 = 402
+				if(v >= c){
+					v = c;
+					clearInterval(timer)
+				}
+				box.style.left = v+'px';
+				console.log(box.style.left)
+			},20)
+	}
+时间对象，时间戳
+		new Date()
+		获取到的是本地时间，时间对象下有一些方法，可以让我们获取或者设置时间
+		1970年1月1日00:00:00格林尼治时间
+		注意：月从0开始，0是一月，11是十二月
+		设置时间对象3种格式
+			1.数字，用逗号分隔（年,月,日,时,分,秒）
+			2.字符串,月份英文或缩写,首字母大小写都行，用逗号或者空格分隔(月 日 年 时:分:秒)
+			3.对象,时间对象
+	获取时间
+		getFullYear() -- 年
+		getMonth()    -- 月（从0开始，0就是一月）
+		getDate()     -- 日
+		getDay()      -- 星期几（星期一就是1,星期日是0）
+		getHours()    -- 小时 
+		getMinutes()  -- 分
+		getSeconds()  -- 秒
+		getMilliseconds()--毫秒
+		getTime()     --时间，当前时间距离1970年1月1日00:00:00的毫秒时间差
+		var date = new Date();
+		console.log(date.getFullYear())
+		console.log(date.getMonth())
+		console.log(date.getDay())
+		console.log(date.getDate())
+		console.log(date.getHours())
+		console.log(date.getMinutes())
+		console.log(date.getSeconds())
+		console.log(date.getMilliseconds())
+		console.log(date.getTime())
+	设置时间
+		setFullYear() -- 年
+		setMonth()    -- 月（从0开始，0就是一月）
+		setDate()     -- 日
+		setHours()    -- 小时 
+		setMinutes()  -- 分
+		setSeconds()  -- 秒
+		setMilliseconds()--毫秒
+		setTime()     --时间，当前时间距离1970年1月1日00:00:00的毫秒时间差
+		var date = new Date();
+		date.setFullYear(2015);
+		date.setMonth(0);
+		date.setDate(1);
+		date.setHours(10);
+		date.setMinutes(50);
+		date.setSeconds(10);
+		date.setTime()
+
 
 
 
