@@ -608,7 +608,7 @@ for循环
 		var f = a();
 		f();//2
 		f();//3
-	函数自执行
+函数自执行
 		 匿名函数声明后直接执行，就不会报错
 	( function(){} )()推荐
 	例子：(function (){
@@ -835,4 +835,44 @@ for循环
 		date.setHours(10);
 		date.setMinutes(50);
 		date.setSeconds(10);
-		date.setTime()		
+		date.setTime()
+	例子：时钟	var imgs = document.getElementsByTagName('img');
+			function show(){
+				var date = new Date();
+			//10:52:02
+			var h = date.getHours();
+			var m = date.getMinutes();
+			var s = date.getSeconds();
+			//获取时间拼成我们想要的格式
+			var str = two(h)+':'+two(m)+':'+two(s);
+			//用我们拼好的时间字符串调整对应图片的数字，时钟就动起来了
+			for(var i=0;i<imgs.length;i++){
+				//第2和5位是:，所以跳过
+				if(i == 2 || i == 5){
+					continue;
+				}
+				imgs[i].src = 'img/'+str.charAt(i)+'.jpg';
+			}
+			//补0
+			function two(n){
+				return n<10?'0'+n:''+n;
+			}
+			console.log(str);
+			}
+			//初始化
+			show();
+			//开启定时器，每1秒执行一次
+			setInterval(show,1000)
+	例子：时间格式化var arr = [2016,10,1,10,1,10];
+			//2016年10月1日10时1分10秒
+			function fn(arr,n){
+				var s = '';
+				var n = n || 0;
+				//var str = '年月日时分秒';
+				var aStr = ['年月日时分秒','-- ::','// ::'];
+				for(var i=0;i<arr.length;i++){
+					s += arr[i]+aStr[n].charAt(i);
+				}
+				return s;
+			}
+			console.log(fn(arr))//2016年10月1日10时1分10秒		
