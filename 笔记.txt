@@ -875,4 +875,69 @@ for循环
 				}
 				return s;
 			}
-			console.log(fn(arr))//2016年10月1日10时1分10秒		
+			console.log(fn(arr))//2016年10月1日10时1分10秒
+	例子：无缝轮播图var arr = ['img/img14.jpg', 'img/img22.jpg', 'img/img24.jpg' ,'img/img25.jpg','img/img32.jpg','img/img33.jpg','img/img36.jpg','img/img42.jpg','img/img43.jpg'];
+			var box = document.getElementById('box');
+			var as = box.getElementsByTagName('a');
+			var ul = box.getElementsByTagName('ul')[0];
+			var imgs = box.getElementsByTagName('img');
+			var n = 0;
+			var onOff = true;
+			var timer = null;
+			//下一张
+			/*	n=0
+ 				img1,img2
+ 			运动前
+ 				img1 = 0
+	 			img2 = 0
+	 		点击瞬间
+	 			img1 = 0
+	 			img2 = 1
+ 			运动中
+ 				img1 = 0
+ 				img2 = 1
+ 			运动后
+			 * 	img1 = 1
+ 				img2 = 1
+ 			瞬间回到初始位置
+ 			这个时候看到的是img1
+ 		
+			 * */
+			//左边下一张
+			as[0].onclick = function(){
+				if(onOff){
+					onOff = !onOff;
+					n++;
+					if(n > arr.length-1){
+						n = 0;
+					}
+					imgs[1].src = arr[n];
+					move(ul,'left',-640,2000,function(){
+						imgs[0].src = arr[n];
+						ul.style.left = '';
+						onOff = !onOff;
+					})
+				}
+			}
+			as[1].onclick = function(){
+				if(onOff){
+					onOff = !onOff;
+					imgs[1].src = arr[n];
+					ul.style.left = '-640px';
+					n--;
+					if(n < 0){
+						n = arr.length-1;
+					}
+					imgs[0].src = arr[n];
+					move(ul,'left',0,2000,function(){
+						onOff = !onOff;
+					})
+				}
+			}
+			timer = setInterval(as[0].onclick,2000);
+			box.onmouseover = function(){
+				clearInterval(timer);
+			}
+			box.onmouseout = function(){
+				timer = setInterval(as[0].onclick,2000);
+			}		
