@@ -1031,4 +1031,24 @@ for循环
 			imgs[0].src = 'img/'+s+'.jpg';
 			oLi.style.cssText = '';
 		})
-	}		
+	}
+字符串
+	由0个或多个字符组成的串
+	string.length
+	返回该字符串有多少个字符
+	只能读取，不能设置
+	string.charAt(index)，String
+	作用：查找字符串某一位置是什么字符
+	参数：
+		index:查找第几位是什么字符串，第一位是0
+	注意：
+		1.只能获取，不能设置
+		2.没有这一位，返回空字符串
+	string.charCodeAt(index),Number
+	作用：返回字符串某一位字符串的unicode码
+	参数：
+		index：第几位，从0开始
+		[a-z]:97-122
+		[A-Z]:65-90
+		[0-9]:48-57
+		
