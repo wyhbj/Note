@@ -1050,5 +1050,46 @@ for循环
 		index：第几位，从0开始
 		[a-z]:97-122
 		[A-Z]:65-90
-		[0-9]:48-57
+		[0-9]:48-57
+	例子：第几位不是数字	var str = "1285hf25678m2367";
+				for(var i=0;i<str.length;i++){
+					var s = str.charCodeAt(i);
+					if(s<48 || s>57){
+						console.log('第'+i+'位不是数字')
+					}
+				}
+	string.indexOf(searchValue,[index]),Number
+			作用：从字符串第一位开始查找指定的字符第一次出现的位置(从左往右)
+			参数：
+			 	searchValue：要查找的字符，string
+			 	[index]:从第几位开始找，默认值为0
+			 注意：
+			 	1.没找到指定字符，返回-1
+			 	2.不传参数，返回-1
+	string.lastIndexOf(searchValue,[index]),Number
+			作用：从字符串最后一位开始查找指定的字符第一次出现的位置(从右往左)
+			参数：
+			 	searchValue：要查找的字符，string
+			 	[index]:从第几位开始找，默认值为最后一位
+			 注意：
+			 	1.没找到指定字符，返回-1
+			 	2.不传参数，返回-1
+	string.split(separate),Array
+			 作用：把字符串用指定分隔符分隔，放到数组里返回
+			 参数：
+			 	separate:分隔符
+			 注意：
+			 	1.不传参数，把整个字符串放到数组里返回
+			 	2.分隔符是空字符串''，字符串的每一个字符都是一个结果放到数组里返回
+			 	3.用字符串里没有的字符分隔，把整个字符串放到数组里返回
+	Array.join(separate),String
+			 作用：把数组里的值用分隔符连接成字符串返回
+			 参数：
+			 	separate：连接符
+			 注意：
+			 	1.不传参数，默认连接符是逗号
+	string.toLowerCase(),String
+			 作用：把字符串里大写变成小写
+	string.toUpperCase(),String
+			 作用：把字符串里小写变成大写
 		
