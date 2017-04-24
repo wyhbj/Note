@@ -1091,5 +1091,16 @@ for循环
 	string.toLowerCase(),String
 			 作用：把字符串里大写变成小写
 	string.toUpperCase(),String
-			 作用：把字符串里小写变成大写
+			 作用：把字符串里小写变成大写
+	confirm('提示文字')
+			 返回值：
+			 	点确定：true
+			 	点取消：false
+	prompt('提示文字')
+			 返回值：
+			 	点确定：输入的字符串
+			 	点取消：null
+	判断	var n = 0;
+		console.log(2<n<5)
+		//2<0,false<5 ,0<5 = true
 		
