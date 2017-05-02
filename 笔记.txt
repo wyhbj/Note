@@ -1226,6 +1226,82 @@ for循环
 				this.style.background = 'red';
 				lis[b].style.background = 'red';
 			}
-		})
+		})
+	array.every(function(){})
+		作用：
+			 遍历数组，如果每一位值都满足条件，返回true,有一个不满足，就返回false
+		参数：
+			 第一个参数：数组里每一个值
+			 第二个参数：数组里的位置
+			 第三个参数：整个数组
+		注意：
+			 一定要写return,形参
+	例子：var arr = [1,2,3,4];
+		console.log(arr.every(function(a,b,c){
+			console.log(a,b,c)
+			return a>0
+		}))
+	array.filter(function(){})
+		作用:
+			遍历数组，满足条件的值放新数组里返回
+	例子：var arr = [1,2,3,4];
+		console.log(arr.filter(function(a){
+			return a>2;
+		}))
+		console.log(arr)
+	array.map(function(){})
+		作用：
+			 遍历数组，把每个值判断的结果放到新数组里返回
+	例子：var arr = [1,2,3,4];
+		console.log(arr.map(function(a){
+			return a>2;
+		}))
+	array.some(function(){})
+		作用：
+			遍历数组，只要有一个值满足判断条件，就返回true,都不满足，返回false
+	例子：var arr = [1,2,3,4];
+		console.log(arr.some(function(a){
+			return a>5;
+		}))
+	array.slice(begin,[end]),Array
+		作用：截取数组指定位置的数据片段，放到新数组返回，原数组不变
+		参数：
+			 begin:开始位置
+			 [end]:结束位置,默认是最后一位
+		注意：
+			 1.不传参数，把数组内每个值放到新数组内返回
+			 2.从开始位置，截取到结束位置，不包括结束位置
+			 3.从开始位置，结束位置-开始位置=截取个数
+			 4.-1是最后一位
+			 5.截取不到，返回空数组
+	array.splice(begin,[length],val1,val2,...)
+		作用：
+			 删除，添加，替换
+		参数：
+			 begin:开始位置
+			 [length]:长度
+			 val1,val2:要替换或者添加的数据
+		删除：
+			 begin:从哪位开始删
+			 [length]:删除几位
+		添加：
+			 begin：开始位置
+			 [length]:0
+			 val1,val2:要添加的数据，可以是1个，也可以是多个，用逗号分隔
+		替换：
+			 begin：开始位置
+			 [length]:要替换几个
+			 val1,val2:要替换的数据，可以是1个，也可以是多个，用逗号分隔
+	例子：var arr = [1,2,3,4];
+		删除
+		arr.splice(1,2);
+		console.log(arr)//[1, 4]
+		添加
+		arr.splice(1,0,9,8,7);
+		console.log(arr)//[1, 9, 8, 7, 2, 3, 4]
+		替换
+		arr.splice(1,2,9,8,7);
+		console.log(arr)//[1, 9, 8, 7, 4]
+
 
 		
