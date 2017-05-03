@@ -1301,7 +1301,104 @@ for循环
 		console.log(arr)//[1, 9, 8, 7, 2, 3, 4]
 		替换
 		arr.splice(1,2,9,8,7);
-		console.log(arr)//[1, 9, 8, 7, 4]
+		console.log(arr)//[1, 9, 8, 7, 4]
+	数组去重	例子：
+	var arr = [1,2,1,1,1];
+	for(var i=0;i<arr.length;i++){
+		for(var j=i+1;j<arr.length;j++){
+			if(arr[i] == arr[j]){
+				arr.splice(j,1);
+				j--;
+			}
+		}
+	}
+	console.log(arr)
+冒泡算法：
+	需求：
+		1.封函数
+		2.传入arr，返回1-8从小到大排序好的数组
+		3.冒泡算法
+		4.2个值进行比较，如果前边的比后边的大，就交换位置，第一次循环完，得到最大值，在最后一位
+		5.再进行第二次比较。。。
+		6.返回排序好的数组
+	var arr1 = [1,2,5,3,8,7,6,4];
+	var n = 0;
+	function bubbleSort(arr){
+		//比较多少次
+		for(var i=0;i<arr.length;i++){
+			//比较每个值，交换位置
+			//console.log('a')
+			for(var j=0;j<arr.length;j++){
+				var a = arr[j];
+				var b = arr[j+1];
+				//console.log(a,b)
+				if(arr[j]>arr[j+1]){
+					arr[j] = b;
+					arr[j+1] = a; 
+				}
+				n++;
+				//console.log(arr)
+			}
+		}
+		return arr;
+	}
+	console.log(bubbleSort(arr1));
+	console.log(n)
+冒泡算法2：
+	var arr1 = [1,2,5,3,8,7,6,4];
+	var n = 0;
+	function bubbleSort(arr){
+		//比较多少次
+		for(var i=0;i<arr.length-1;i++){
+			var onOff = true;
+			//比较每个值，交换位置
+			console.log('a')
+			for(var j=0;j<arr.length-i-1;j++){
+				var a = arr[j];
+				var b = arr[j+1];
+				//console.log(a,b)
+				if(arr[j]>arr[j+1]){
+					arr[j] = b;
+					arr[j+1] = a; 
+					onOff = false;
+				}
+				n++;	
+			}
+			console.log(onOff)
+			if(onOff){
+				break;
+			}	
+		}
+		return arr;
+	}	
+	console.log(bubbleSort(arr1));
+	console.log(n)
+递归：函数自己调用自己
+	1.有条件的调用
+	var a = 0;
+	function fn(){
+		a++;
+		if(a<10){
+			fn();
+		}
+	}
+	fn();
+	console.log(a)
+	2.有终止条件
+	function fn(n){
+		if(n==1){
+			return 1;
+		}
+		return fn(n-1)+n;
+	}
+	console.log(fn(5))
+	1+2+3+4+5=15
+	fn(5)
+	fn(4)+5
+	fn(3)+4
+	fn(2)+3
+	fn(1)+2
+	1
 
 
 		
