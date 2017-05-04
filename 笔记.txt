@@ -1398,7 +1398,71 @@ for循环
 	fn(3)+4
 	fn(2)+3
 	fn(1)+2
-	1
-
-
+	1
+快排算法:
+	1.切出数组第一位值作为比较值，存为c
+	2.准备2个数组，left和right
+	3.循环数组的第一位值与c做对比，比c小切出来放入left,比c大切出来放入right
+	4.如果arr.length=0证明数组内的值都对比完了，0的布尔值是false，终止循环
+	5.left c right，按顺序用concat连接起来返回
+	6.如果left,right还需要拆分，递归调用自身函数
+	7.所以写成quickSort(left).concat(c,quickSort(right))
+	left[]	arr1[0]=1  right[2,5,3,8,7,6,4]
+	left[]   right[0]=2   right[5,3,8,7,6,4]
+	left[3,4]	 right[0]=5   right[8,7,6]
+	left[] left[0]=3  right[4]
+	left[7,6]	right[0]=8  right[]
+	left[6] left[0]=7 right[]
+	例子：var arr1 = [1,2,5,3,8,7,6,4];
+		function quickSort(arr){
+			//终止条件arr.length<=1，数组为空数组或者只有1个值
+			if(arr.length<=1){
+				return arr;
+			}
+			//切出数组第一位值作为比较值
+			var c = arr.shift();
+			//准备2个数组left,right
+			var left = [];
+			var right = [];
+			//数组length为0，证明都比较完了，跳出循环，否则就会循环比较
+			while(arr.length){
+				//数组第一位值与c比较
+				if(arr[0]>c){
+					//比c大，切出来放入right
+					right.push(arr.shift())
+				}else{
+					//比c小，切出来放入left
+					left.push(arr.shift())
+				}
+			}
+			console.log(left,c,right)
+			//left,c,right按顺序连接
+			//left,right还需要切，递归调用自身函数
+			return quickSort(left).concat(c,quickSort(right));
+		}
+		console.log(quickSort(arr1))
+JSON
+	javascript object notation
+	是一种轻量级数据交换格式,类型是字符串
+	长得像对象的字符串'{}','[]'
+		不支持undefined
+		5,"",null,true,'{}','[]'
+		//对象格式
+		{
+			name:'小红'，
+			age:18
+		}
+		//JSON格式，属性名必须加双引号，数据类型是字符串也要双引号
+                '{"name":"小红","age":18}'
+	JSON.parse(string)
+		作用：把JSON字符串转成对象
+		var j = '{"name":"小红","age":18}';
+		console.log(JSON.parse(j).name)
+	JSON.stringify(object)
+		作用：把对象转成JSON字符串
+		var j={
+			name:'小红',
+			age:18
+		}
+		console.log(JSON.stringify(j))
 		
