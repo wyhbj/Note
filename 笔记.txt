@@ -1464,5 +1464,59 @@ JSON
 			name:'小红',
 			age:18
 		}
-		console.log(JSON.stringify(j))
+		console.log(JSON.stringify(j))
+js三部分组成
+	ECMAScript
+			javascript核心标准，定义并实现了JS的基本语法，数据类型，类型转换，内置对象，方法的基本标准
+	DOM（文档对象模型）
+			document object model
+			根据ECMAScript扩展出来操作页面的标准
+			提供创建、删除、修改、插入等操作页面的方法和标准，赋予我们操作页面的权利
+	BOM（浏览器对象模型）
+			browser object model
+			提供浏览器相关的方法和标准，比如打开/关闭窗口，地址栏
+	DOM
+		document本质是字符串,页面在解析时，会调用js解析器，把标签解析成对象，对象下有很多方法，操作页面元素就很方便
+		js在解析时，会解析成DOM树（对象），DOM树由DOM节点组成，我们操作页面操作的就是这些节点
+		节点类型有12种，不同的节点类型，操作的方法也不一样
+		比如：标签就是元素节点，文字就是文本节点，注释就是注释节点
+	节点类型
+		ELEMENT_NODE 	                1
+		ATTRIBUTE_NODE 	                2
+		TEXT_NODE 	                3
+		DATA_SECTION_NODE 	        4
+		ENTITY_REFERENCE_NODE 	        5
+		ENTITY_NODE 	                6
+		PROCESSING_INSTRUCTION_NODE 	7
+		COMMENT_NODE 	                8
+		DOCUMENT_NODE 	                9
+		DOCUMENT_TYPE_NODE 	        10
+		DOCUMENT_FRAGMENT_NODE 	        11
+		NOTATION_NODE 	                12
+	例子：<div id="div" class="a">
+			<span></span>
+			<!--注释-->
+			文字
+		</div>
+	 node:节点
+	 E：元素节点
+		node.nodeType
+		作用：查看节点类型，返回Number
+		常用的节点类型
+			 1 - 元素节点
+			 2 - 属性节点
+			 3 - 文本节点
+			 8 - 注释节点
+			 9 - document节点
+	var div = document.getElementById('div');
+	console.log(div.nodeType)//1
+	//E.attributes获取到属性的集合
+	var attrs = div.attributes;
+	console.log(attrs[1].nodeType);//2
+	//E.childNodes获取到所以第一级子节点
+	var child = div.childNodes;
+	console.log(child[3].nodeType)//8
+	//console.log(child[0].nodeType)
+	console.log(document.nodeType)//9
+
 		
