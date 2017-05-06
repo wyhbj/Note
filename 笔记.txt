@@ -1517,6 +1517,71 @@ js三部分组成
 	var child = div.childNodes;
 	console.log(child[3].nodeType)//8
 	//console.log(child[0].nodeType)
-	console.log(document.nodeType)//9
+	console.log(document.nodeType)//9
+		node.nodeName
+		作用：查看节点名称,返回String
+	var div = document.getElementById('div');
+	//1.元素类型节点，大写标签名
+	console.log(div.nodeName)//DIV
+	//2.属性类型节点，小写属性名
+	var attrs = div.attributes;
+	console.log(attrs[0].nodeName)//id
+	//3.文本类型节点，#text
+	var child = div.childNodes;
+	console.log(child)
+	console.log(child[0].nodeName)//#text
+	//8.注释类型节点，#comment
+	console.log(child[3].nodeName)//#comment
+	//9.document节点,#document
+	console.log(document.nodeName)//#document
+	E.childNodes
+		作用：获取所有第一级子节点，是个集合，记得加下标
+		标准下：
+			childNodes所有的第一级子节点
+		非标准下：
+			childNodes所有第一级元素节点
+	E.children
+		作用：获取所有第一级元素节点,是个集合，记得加下标
+		不是标准方法
+	var div = document.getElementById('div');
+	//var child = div.childNodes;
+	var child = div.children;
+	//console.log(child)
+	//alert(child[0].nodeName)
+	alert(child[0].nodeName)
+	例子：var lis = document.getElementsByTagName('li');
+		for(var i=0;i<lis.length;i++){
+			lis[i].onmouseover = function(){
+				var child = this.children[0];
+				//console.log(child)
+				if(child){
+					child.style.display = 'block';
+				}
+			}
+			lis[i].onmouseout = function(){
+				var child = this.children[0];
+				//console.log(child)
+				if(child){
+					child.style.display = '';
+				}
+			}
+		}
+	E.parentNode
+		作用：获取该元素节点的父级元素节点
+		只能获取，不能设置
+	例子：var spans = document.getElementsByTagName('span');
+		for(var i=0;i<spans.length;i++){
+			spans[i].onclick = function(){
+				this.parentNode.style.background = 'red';
+			}
+		}
+	E.previousElementSibling
+		作用：获取上一个兄弟元素节点
+	E.nextElementSibling
+		作用：获取下一个兄弟元素节点
+	E.firstElementChild
+		作用：获取E元素节点下第一个元素子节点
+	E.lastElementChild
+		作用：获取E元素节点下最后一个元素子节点
 
 		
