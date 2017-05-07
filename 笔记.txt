@@ -1582,6 +1582,20 @@ js三部分组成
 	E.firstElementChild
 		作用：获取E元素节点下第一个元素子节点
 	E.lastElementChild
-		作用：获取E元素节点下最后一个元素子节点
+		作用：获取E元素节点下最后一个元素子节点
+	E.offsetParent
+		 作用：获取E的定位父级元素,属性值不为static
+		 注意：
+		 	1.没有定位父级，找到body
+		 	2.body是null
+	E.offsetLeft
+		 作用：获取E左边框外，到E的定位父级的左边框内的距离，不带单位
+	E.offsetTop
+		 作用：获取E上边框外，到E的定位父级的上边框内的距离，不带单位
+		 没有定位父级，自身也不是定位元素，获取到的是到html的距离，注意：body自带margin：8px，需要清除默认样式
+	firefox:
+		 问题：定位父级同时有border和overflow,offsetLeft会重新计算
+		 解决：
+		 	1.不让border和overflow在定位父级上同时存在
 
 		
