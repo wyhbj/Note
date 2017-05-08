@@ -1596,6 +1596,45 @@ js三部分组成
 	firefox:
 		 问题：定位父级同时有border和overflow,offsetLeft会重新计算
 		 解决：
-		 	1.不让border和overflow在定位父级上同时存在
+		 	1.不让border和overflow在定位父级上同时存在
+	获取元素宽/高
+		1.style
+			 只能获取行间样式，带单位
+		2.getComputedStyle()
+			 页面渲染后的、计算后的样式值，带单位
+		3.clientWidth/clientHeight
+			 自身宽/高+padding，不带单位
+		4.offsetWidth/offsetHeight
+			 自身宽/高+padding+border，不带单位
+		注意：
+			 内嵌元素clientWidth是0
+	页面可视区宽/高
+		document.documentElement.clientWidth
+		document.documentElement.clientHeight
+	E.getBoundingClientRect()
+		 对象，top bottom left right width height,不带单位
+		 注意：bottom
+		 下边框外到可视区上边的距离
+		 right
+		 右边框外到可视区左边的距离	
+		 width/height
+		 自身宽/高+padding+border
+	属性操作方法
+		1.通过.的方式
+		2.通过[]的方式
+			前2种可以操作或访问固有属性，js添加自定义属性
+		3.E.getAttribute('属性名')
+			获取行间的固有属性和行间自定义属性
+			<div id="div1" class="a" b="2"></div>
+			var div1 = document.getElementById('div1');
+			div1.index = 1;
+			//console.log(div1.b)//undefined
+			console.log(div1.getAttribute('b'))
+			console.log(div1.getAttribute('id'))
+			console.log(div1.getAttribute('index'))//null
+		E.setAttribute('属性名'，'属性值')
+		 	作用：设置行间属性名和值
+	E.removeAttribute('属性名')
+		 作用：删除行间属性名及属性值
 
 		
