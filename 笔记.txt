@@ -1635,6 +1635,62 @@ js三部分组成
 		E.setAttribute('属性名'，'属性值')
 		 	作用：设置行间属性名和值
 	E.removeAttribute('属性名')
-		 作用：删除行间属性名及属性值
+		 作用：删除行间属性名及属性值
+document.createElement('标签名')
+	作用：创建元素
+		createElement是document下的方法，所以必须这么写
+		只是创建了元素，但是页面上还没有这个元素，必须要放到页面中，这样页面上才有这个元素
+父级节点.appendChild(要插入的节点)
+	作用：向父级节点最后插入要插入的节点
+		如果插入的是页面中已有的节点，相当于剪切
+父级节点.insertBefore(要插入的节点，被插入的节点)
+	作用:在父级节点下，把要插入的节点，插入到被插入的节点前
+		如果插入的是页面已有节点，相当于剪切
+		被插入的节点一定要是父级节点下的节点，否则会报错
+	例子：for(var i=0;i<10;i++){
+			var div = document.createElement('div');
+			div.innerHTML = i;
+			div.style.cssText = 'width:100px;height:100px;float:left;margin-right:5px;border:1px solid #000';
+			div.onclick = function(){
+				alert(1);
+			}
+			document.body.appendChild(div);
+		}
+父级节点.removeChild(要删除的节点)
+	作用：删除父级节点下要删除的节点
+		注意：要删除的节点必须在父级节点下，否则会报错
+父级节点.replaceChild(要替换的节点，被替换的节点)
+	作用：在父级节点下，用要替换的节点，替换被替换的节点
+		注意：被替换的节点一定要在父级节点下，否则会报错
+		 如果要替换的节点是页面中已有的节点，相当于剪切
+node.cloneNode(参数)
+	作用：克隆节点
+	参数：不传参数默认是false
+		true:深度克隆，子节点也克隆
+		false:只能克隆自身，下面的子节点不克隆
+		 	可以克隆：html,css,class...
+		 	不能克隆：自定义属性,事件
+		var list = document.getElementById('list');
+		var lis = list.children;
+		lis[0].style.background = 'red';
+		lis[0].className = 'abc';
+		lis[0].index = 1;
+		lis[0].onclick = function(){};
+		var li = lis[0].cloneNode()
+		console.log(li)
+	例子：var inps = document.getElementsByTagName('input');
+		var list = document.getElementById('list');
+		inps[1].onclick = function(){
+			var val = inps[0].value;
+			var li = document.createElement('li');
+			li.innerHTML = val;
+			var span = document.createElement('span');
+			span.innerHTML = 'X';
+			span.onclick = function(){
+				list.removeChild(this.parentNode)
+			}
+			li.appendChild(span);
+			list.appendChild(li);
+		}
 
 		
