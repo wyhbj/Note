@@ -1691,6 +1691,60 @@ node.cloneNode(参数)
 			}
 			li.appendChild(span);
 			list.appendChild(li);
-		}
+		}
+	如果元素是表格，js会提供一些特殊的操作方法
+		thead
+			table.tHead
+			rows:行,[0]数字下标
+			cells:列,[0]数字下标
+		tbody
+			复数，tBodies[0]
+		tfoot
+			 table.tFoot
+	var tab = document.getElementById('tab');
+	console.log(tab.tHead.rows[0].cells[0])
+	console.log(tab.tBodies[0].rows[0].cells[1])
+	console.log(tab.tFoot)
+	例子：var arr = [{id:1,name:'小黄',sex:'男',age:18},
+			{id:2,name:'小白',sex:'男',age:28},
+			{id:3,name:'小红',sex:'女',age:38},
+			{id:4,name:'小明',sex:'男',age:48}];
+		var tab = document.getElementById('tab');
+		for(var i=0;i<arr.length;i++){
+			var tr = document.createElement('tr');
+			for(var k in arr[i]){
+				var td = document.createElement('td');
+				td.innerHTML = arr[i][k];
+				tr.appendChild(td);
+				console.log(k)
+			}
+		}
+	表单元素有一些特殊的操作方法，通过name
+	例子：<form action="" id="fm">
+			<input type="text" name="txt"/>
+			<input type="password" name="pass"/>
+			<input type="checkbox" name="hobby"/>吃
+			<input type="checkbox" name="hobby"/>喝
+			<input type="checkbox" name="hobby"/>睡
+			<input type="submit" value="" name="sub"/>
+			<select name="dizhi">
+				<option value="bj">北京</option>
+				<option value="tj">天津</option>
+				<option value="ts">唐山</option>
+				<option value="hb">河北</option>
+			</select>
+			<input type="button" value="按钮" name="btn"/>
+		</form>
+	var fm = document.getElementById('fm');
+	fm.txt.value = '1111';
+	fm.pass.value = '222';
+	console.log(fm.hobby)
+	fm.hobby[0].checked = true;
+	fm.hobby[1].checked = true;
+	fm.sub.value="提交按钮"
+	fm.btn.onclick = function(){
+		fm.dizhi.value = 'hb';
+		console.log(fm.dizhi.value)
+	}
 
 		
