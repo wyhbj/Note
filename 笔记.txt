@@ -1745,6 +1745,107 @@ node.cloneNode(参数)
 	fm.btn.onclick = function(){
 		fm.dizhi.value = 'hb';
 		console.log(fm.dizhi.value)
+	}
+BOM
+	浏览器对象模型
+	Browser Object Model
+	BOM是浏览器相关的方法
+	核心对象是window
+	window.open(URL,name,specs)
+		作用：打开新窗口
+		参数：String
+		URL:地址，'http://www.sina.com',不写http默认为本地
+		name:打开方式，框架name
+		_blank:新窗口打开
+		_self:当前窗口打开
+		_top:最外层框架
+		_parent：父级框架
+		specs:规格，只有在新窗口打开有效	,'width=100px,height=100px',属性=值，多个属性间用逗号分隔
+			返回值：新打开窗口的window
+			注意：
+			 	1.写在全局，新窗口会被拦截
+			 	2.不写传参，默认在新窗口打开，about:blank
+	例子：var btn = document.getElementById('btn');
+		//open();//写全局会被拦截
+		btn.onclick = function(){
+			//open();//新窗口空白页
+			//open('http://www.baidu.com')
+			//open('http://www.baidu.com','_blank')
+			//open('http://www.baidu.com','_self')
+			//open('http://www.baidu.com','iframe1')
+			//open('iframe.html','iframe1')
+			//open('iframe.html')
+			//open('iframe.html','_blank','width=100px,height=100px')
+			var opener = open('iframe.html','_blank','width=100px,height=100px')
+			console.log(opener)
+		}
+	window.close();
+		作用：关闭窗口
+		问题：
+		 	firefox:
+		 	close只能关闭open打开的窗口
+	例子：var opener = null;
+		//打开新窗口
+		btn.onclick = function(){
+			//记录新打开窗口的window
+			opener = open();
+		}
+		//关闭新窗口
+		btn1.onclick = function(){
+			//通过记录找到新窗口的window关闭
+			opener.close();
+		}
+		//关闭当前窗口
+		btn2.onclick = function(){
+			close();
+		}
+	navigator
+		浏览器信息对象
+		navigator.userAgent
+		string,浏览器信息，什么浏览器Chrome，Firefox，版本号
+	location
+		地址栏对象,下面的属性可以获取也可以设置
+		location.href
+			 绝对地址
+		location.search
+			 查询信息
+		除了hash以外，都会刷新页面
+			 location.hash
+			 	锚信息
+			 注意：
+			 	search设置不能放到全局，不然会无限刷新页面
+		var btn = document.getElementById('btn');
+		//console.log(location)
+		console.log(location.href);
+		btn.onclick = function(){
+			location.href = 'http://www.baidu.com';
+		}
+	location.search
+		查询信息
+		'www.miaov.com?s=abc#page=1'
+		?到#之间的内容
+	var btn = document.getElementById('btn');
+	console.log(location.search)
+	btn.onclick = function(){
+		location.search = 's=abc'
+	}
+	location.hash
+		锚信息
+		#后边的内容
+	window.onhashchange
+		当hash改变触发的事件
+	var inps = document.getElementsByTagName('input');
+	inps[0].onclick = function(){
+		location.hash = 'page=1';
+	}
+	inps[1].onclick = function(){
+		location.hash = 'page=2';
+	}
+	inps[2].onclick = function(){
+		location.hash = 'page=3';
+	}
+	window.onhashchange = function(){
+		console.log('hash变了')
 	}
 
 		
