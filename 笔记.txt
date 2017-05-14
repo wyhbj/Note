@@ -1846,6 +1846,67 @@ BOM
 	}
 	window.onhashchange = function(){
 		console.log('hash变了')
+	}
+	可视区宽/高
+		document.documentElement.clientWidth
+		document.documentElement.clientHeight
+		window.innerWidth
+		window.innerHeight
+		window.innerWidth是标准的获取可视区宽高的方法，高版本支持，低版本不支持
+		移动端不用考虑兼容性，多用window.innerWidth
+		PC端在实际中，用document.documentElement.clientWidth
+	window.onresize
+		窗口尺寸改变时候触发事件
+	window.onscroll
+		滚动条滚动时候触发事件
+	window.pageYOffset
+	window.pageXOffset
+		获取滚动条距离标准方法
+		chrome
+		 	document.body.scrollTop
+		其他
+ 			document.documentElement.scrollTop
+ 			在chrome可以获取到，但是是0
+	window.scrollTo(x,y)
+		设置滚动条距离
+		参数：
+			x:x轴
+			y:y轴
+	btn.onclick = function(){
+		window.scrollTo(0,1000)
+	}
+	for(var i=0;i<divs.length;i++){
+		divs[i].style.height = window.innerHeight + 'px';
+	}
+	for(var i=0;i<spans.length;i++){
+		spans[i].index = i;
+		spans[i].onclick = function(){
+			window.scrollTo(0,window.innerHeight*this.index);
+		}
+	}
+	clientHeight/clientWidth
+		自身+padding
+	offsetHeight/offsetWidth
+		自身+padding+border
+	scrollHeight/scrollWidth
+		如果自己的内容没超出本身，clientHeight
+		如果自己的内容超出本身，内容高度
+	例子：图片延迟加载
+	var imgs = document.getElementsByTagName('img');
+	window.onload = window.onscroll = function(){
+		//可视区高度
+		var w = window.innerHeight;
+		//滚动高度
+		var p = window.pageYOffset;
+		for(var i=0;i<imgs.length;i++){
+			var iT = imgs[i].getBoundingClientRect().top;
+			if(iT<(w+p)){
+				if(imgs[i].getAttribute('_src')){
+					imgs[i].src = imgs[i].getAttribute('_src');
+					imgs[i].removeAttribute('_src');	
+				}
+			}
+		}
 	}
 
 		
