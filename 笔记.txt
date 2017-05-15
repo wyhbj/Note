@@ -1908,5 +1908,103 @@ BOM
 			}
 		}
 	}
-
+事件
+	UI事件
+	鼠标事件
+	键盘事件
+	焦点事件
+	表单事件
+	onload
+		框架加载完，图片加载完，内容加载完
+	img.onload = function(){
+		console.log(1)
+	}
+	鼠标事件
+		onclick
+			 单击事件
+		鼠标按下抬起才会触发单击事件，某些可点击元素，回车也会触发单击事件，一般单击事件是鼠标左键
+		onmousedown
+			 鼠标按下
+		onmouseup
+			 鼠标抬起
+		mousedown->mouseup->click
+		onmouseover
+			 移入
+		onmouseout
+			 移出
+		从外边移入元素触发over，从元素移入子元素触发out,over,从子元素移到元素out,over,从元素移出触发out
+		onmouseenter
+			 移入
+		onmouseleave
+			 移出
+		只有从外部移入移出才触发，移入子元素不触发	
+		onmousemove
+			 移动
+		不是移动1px触发1次，是一定时间间隔触发一次	
+		onmousewheel
+			 滚轮
+			 鼠标滚轮上滚或者下滚触发
+		ondblclick
+			 双击
+			 鼠标在元素上极短事件连续点击2次触发，会触发2次click事件
+		click和dblclick
+			 1.不绑在同一元素上
+			 2.通过某些方法阻止click
+	键盘事件
+		不是所有元素都有键盘事件，只有可输入的元素才键盘事件
+		表单元素,document
+		onkeydown
+			键盘按下
+			按下的一瞬间触发，按下不抬起会连续触发
+		onkeyup
+			键盘按下
+			抬起的一瞬间触发
+		上边的所有按键都触发，press功能键不触发
+		onkeypress
+			 键盘按下
+			 按下不抬起会连续触发	
+		keydown->keypress->keyup
+	焦点事件
+		不是所有元素都有焦点事件，只有可交互性的元素才有焦点事件
+		页面只能有一个焦点，一个聚焦就意味着另一个失焦，焦点默认在document
+		onfocus
+			聚焦事件
+		onblur
+			失焦事件
+		focus()
+			聚焦方法
+		blur()
+			失焦方法
+		设置焦点方法
+			1.点击
+			2.tab
+			3.js
+	表单事件
+		onsubmit
+			提交事件
+		onreset
+			重置事件
+		onchange
+			内容改变事件，在失焦时候触发
+		oninput
+			内容改变
+		submit()提交方法
+			不会触发onsubmit事件 
+		reset()重置方法
+		select()选中文本
+		inps[1].onclick = function(){
+			//fm.submit();
+			fm.reset();
+		}
+	例子：<input type="text" placeholder="请输入内容"/>
+	box.onclick = function(){
+		inp.focus();
+	}
+	inp.oninput = function(){
+		if(this.value!=''){
+			tip.style.display = 'none';
+		}else{
+			tip.style.display = 'block';
+		}
+	}	
 		
