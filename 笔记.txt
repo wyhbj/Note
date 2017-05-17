@@ -2006,5 +2006,44 @@ BOM
 		}else{
 			tip.style.display = 'block';
 		}
-	}	
+	}
+	事件对象event
+		记录事件触发时的详细信息的,事件调用函数里才能用这个对象
+		不同的事件，事件对象记录的信息不全相同，比如：鼠标位置，键盘键值
+		事件调用函数第一个形参就是事件对象,e||ev
+		FF：
+			event认为是变量,报错
+		chrome,ie:
+			可以拿到event
+		ie低版本是undefined
+	鼠标事件对象
+		altKey
+		shiftKey
+		ctrlKey
+			按住alt||shift||ctrl,触发鼠标事件值就是true，没按就是false
+		clientX
+		clientY
+			鼠标触发事件坐标到可视区左边和上边的距离
+		which
+			键值
+			左1中2右3，chrome和ff不同
+		document.onclick = function(ev){
+			//console.log(ev)
+			console.log(ev.clientX)
+		}
+	例子：var box = document.getElementById('box');
+		document.onmousemove = function(ev){
+			var iL = ev.clientX-box.offsetWidth/2;
+			var iT = ev.clientY-box.offsetHeight/2;
+			var maxL = window.innerWidth-box.offsetWidth;
+			var maxT = window.innerHeight-box.offsetHeight;
+			if(iL>maxL){
+				iL = maxL;
+			}
+			if(iL<0){
+				iL = 0;
+			}
+			box.style.left =  iL+ 'px';
+			box.style.top = iT + 'px';
+		}	
 		
