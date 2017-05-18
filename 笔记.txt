@@ -2045,5 +2045,88 @@ BOM
 			}
 			box.style.left =  iL+ 'px';
 			box.style.top = iT + 'px';
-		}	
+		}
+	键盘事件对象
+		ev.keyCode
+		键值
+			键盘事件独有的
+		ev.which
+		键值
+			所有的输入设备都有的
+		ev.altKey
+			ev.shiftKey
+			ev.ctrlKey
+			按住alt||shift||ctrl,触发鼠标事件值就是true，没按就是false
+		常用的
+			回车13空格32左37上38右39下40
+	例子：键盘控制div移动
+	var box = document.getElementById('box');
+	var code = 0;
+	document.onkeydown = function(ev){
+		code = ev.keyCode;
+	}
+	document.onkeyup = function(ev){
+		code = 0;
+	}
+	setInterval(function(){
+		switch(code){
+			case 37:
+				box.style.left = (box.offsetLeft-10)+'px';
+				break;
+			case 38:
+				box.style.top = (box.offsetTop-10)+'px';
+				break;
+			case 39:
+				box.style.left = (box.offsetLeft+10)+'px';
+				break;
+			case 40:
+				box.style.top = (box.offsetTop+10)+'px';
+				break;
+		}
+	},12)
+	事件源：
+		触发该事件的元素（源头）
+		ev.target
+	例子：坦克打出炮弹
+	var box = document.getElementById('box');
+	var code = 0;
+	document.onkeydown = function(ev){
+		code = ev.keyCode;
+		if(ev.keyCode == 32){
+			fire();
+		}
+	}
+	document.onkeyup = function(ev){
+		code = 0;
+	}
+	setInterval(function(){
+		switch(code){
+			case 37:
+				box.style.left = (box.offsetLeft-2)+'px';
+			break;
+			case 38:
+				box.style.top = (box.offsetTop-2)+'px';
+			break;
+			case 39:
+				box.style.left = (box.offsetLeft+2)+'px';
+			break;
+			case 40:
+				box.style.top = (box.offsetTop+2)+'px';
+			break;
+		}
+	},16);
+	function fire(){
+		var pos = box.getBoundingClientRect();
+		var span = document.createElement('span');
+		span.style.left = pos.right + 'px';
+		span.style.top = (pos.top+pos.height/2-5) + 'px';
+		span.timer = setInterval(function(){
+			span.style.left = (span.offsetLeft+10)+'px';
+			if(span.offsetLeft == 800){
+				clearInterval(span.timer);
+				document.body.removeChild(span);
+			}
+		},16)
+		document.body.appendChild(span);
+	}	
 		
