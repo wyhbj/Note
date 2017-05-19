@@ -2128,5 +2128,57 @@ BOM
 			}
 		},16)
 		document.body.appendChild(span);
-	}	
+	}
+事件绑定
+	一个函数和元素的某一个事件进行关联，当这个事件触发的时候，执行绑定的函数
+	通过on绑定的函数，同一元素的同一事件绑定多个函数，后绑定的函数会覆盖前边绑定函数
+	E.addEventListener('事件名',函数,是否在捕获阶段调用)
+		作用:绑定事件
+		参数：
+			'事件名':string,不加on
+			函数：有名，匿名都可以
+			是否在捕获阶段调用：布尔值，默认值是false
+			 	true:在捕获阶段调用
+			 	false:不在捕获节点调用（冒泡阶段调用）
+			匿名函数都不相同，所以可以绑定多个
+			有名函数，同一元素下的同一事件的同一有名函数绑定多个，后边会覆盖前边
+			移动端用这个绑定事件
+	事件流/事件模型
+		当事件触发时执行的流程
+		事件触发要执行3个阶段
+		捕获阶段
+			 从window到目标元素寻找的过程
+		目标阶段
+		冒泡阶段
+			 从目标元素到window的过程
+			 	
+			 on绑定的事件默认是冒泡阶段调用	
+		function fn(){
+			console.log(this)
+		}
+		div1.addEventListener('click',fn,true)
+		div2.addEventListener('click',fn,false)
+		div3.addEventListener('click',fn,false)
+		div4.addEventListener('click',fn,false)
+		document.addEventListener('click',fn,false)
+	阻止冒泡
+	ev.cancelBubble默认是false，也就是不阻止冒泡
+		true：阻止冒泡
+		false：不阻止冒泡
+		只能阻止同一事件的冒泡	
+	ev.stopPropagation()
+		阻止后面进程(后续的捕获或者冒泡)
+	E.removeEventListener('事件名'，函数名，是否在捕获阶段调用)
+		作用：解绑事件
+		只能解绑同元素的同事件的同函数的同一阶段调用的事件
+		removeEventListener只能解绑addEventListener绑定的事件函数
+		on绑定的事件函数用null解绑
+	阻止默认行为
+		1.找到触发默认行为的事件和对象
+		2.阻止
+			方法1：return false
+			方法2：ev.preventDefault()
+		addEventListener用return false无效，只能用ev.preventDefault()
+	oncontextmenu
+		当调用上下文菜单触发事件	
 		
