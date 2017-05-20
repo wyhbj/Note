@@ -2180,5 +2180,30 @@ BOM
 			方法2：ev.preventDefault()
 		addEventListener用return false无效，只能用ev.preventDefault()
 	oncontextmenu
-		当调用上下文菜单触发事件	
+		当调用上下文菜单触发事件
+	拖拽过程：
+		鼠标按下
+			在元素上按下，记录按下的坐标到元素左上角的距离
+		鼠标移动
+			根据鼠标当前坐标和记录的距离计算出元素的定位值，赋给元素
+		鼠标抬起
+			清除鼠标移动和抬起事件
+	var box = document.getElementById('box');
+	box.onmousedown = function(ev){
+		//文字/图片有系统默认行为，阻止默认行为，用ev.preventDefault()可以放到前边，用return false要放在最下边 
+		ev.preventDefault();
+		var disX = ev.clientX - this.getBoundingClientRect().left;
+		var disY = ev.clientY - this.getBoundingClientRect().top;
+		//mousemove是间隔触发的，所以移动过快，就移出元素了
+		document.onmousemove = function(ev){
+			var l = ev.clientX - disX;
+			var t = ev.clientY - disY;
+			box.style.left = l + 'px';
+			box.style.top = t + 'px';
+		}
+		document.onmouseup = function(){
+			document.onmousemove = document.onmouseup = null;
+		}
+		//return false;
+	}	
 		
