@@ -2205,5 +2205,104 @@ BOM
 			document.onmousemove = document.onmouseup = null;
 		}
 		//return false;
-	}	
+	}
+	例子：碰撞
+	var box = document.getElementById('box');
+	var lis = document.getElementsByTagName('li');
+	var pos = {};
+	var isDrag = false;
+	box.onmousedown = function(ev){
+		pos.disX = ev.clientX-this.getBoundingClientRect().left;
+		pos.disY = ev.clientY-this.getBoundingClientRect().top;
+		ev.preventDefault();
+		pos.e = this;
+		isDrag = true;
+	}
+	document.onmousemove = function(ev){
+		if(isDrag){
+			var l = ev.clientX - pos.disX;
+			var t = ev.clientY - pos.disY;	
+			pos.e.style.left = l + 'px'; 
+			pos.e.style.top = t + 'px';
+			for(var i=0;i<lis.length;i++){
+				if(duang(box,lis[i])){
+					lis[i].style.background = 'yellow';
+				}else{
+					lis[i].style.background = '';
+				}
+			}	
+		}		
+	}
+	document.onmouseup = function(){
+		isDrag = false;
+	}
+	function duang(obj1,obj2){
+		var pos1 = obj1.getBoundingClientRect();
+		var pos2 = obj2.getBoundingClientRect();
+		if(pos1.right<pos2.left || pos1.bottom<pos2.top || pos1.left>pos2.right || pos1.top>pos2.bottom){
+			//没碰上
+			return false;
+		}else{
+			//碰上
+			return true;
+		}
+	}
+鼠标滚轮事件对象
+	chrome/ie:onmousewheel
+	ev.wheelDelta
+		向上滚:120
+		向下滚:-120
+	fireFox:DOMMouseScroll,只能通过addEventListener绑定事件，不能用on	
+	ev.detail
+		向上滚:-3
+		向下滚:3
+	document.onmousewheel = function(ev){
+		console.log(ev)
+	}
+	document.addEventListener('DOMMouseScroll',function(ev){
+		console.dir(ev)
+	})
+	例子：var div = document.getElementById('div');
+		var n = Number(div.innerHTML);
+		div.onmousewheel = function(ev){
+			if(ev.wheelDelta>0){
+				//向上
+				n++;
+			}else{
+				//向下
+				n--;
+			}
+			div.innerHTML = n;
+		}
+		div.addEventListener('DOMMouseScroll',function(ev){
+			if(ev.detail<0){
+				//向上
+				n++;
+			}else{
+				//向下
+				n--;
+			}
+			div.innerHTML = n;
+		})
+	例子：自定义滚动条
+	var div = document.getElementById('box');
+	var span = div.getElementsByTagName('span')[0];
+	span.onmousedown = function(ev){
+		var disY = ev.clientY - this.getBoundingClientRect().top;
+		document.onmousemove = function(ev){
+			var t = ev.clientY-disY;
+			var maxT = div.offsetHeight-span.offsetHeight;
+			if(t<0){
+				t=0;
+			}
+			if(t>maxT){
+				t=maxT;
+			}
+			span.style.top = t + 'px';
+		}
+		document.onmouseup = function(){
+			document.onmousemove = document.onmouseup = null;
+		}
+		return false;
+	}
 		
